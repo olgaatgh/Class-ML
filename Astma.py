@@ -23,6 +23,7 @@ from sklearn import metrics
 from sklearn import preprocessing
 
 from scipy.stats import sem
+from class_vis import prettyPicture
 ######################
 
 def measure_performance(X,y,clf, show_accuracy = True, show_classification_report = True, show_confusion_matrix = True):
@@ -58,8 +59,15 @@ data = np.delete(data,b, 0)
 
 data_y = data[:,21]
 data_X= np.delete(data,[21],1)
-data_X = np.delete(data_X,[8,9,10,13,14,15],1)
+
+#remove some featurres and leaving only 15 of them:
+#data_X = np.delete(data_X,[8,9,10,13,14,15],1)
+
+
+#choose only 2 feachers to run the algorithm against:
+data_X = np.delete(data_X,[0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19],1)
 #data_X = data_X[:,11]
+feature_names = ['polution zone','allergies', 'astma','mother smokes','faather smokes','parental education','frequent colds','cough','height','sex','weight','lung cap','airflow','airflow 50%','airflow 75%']
 
 X_train, X_test, y_train, y_test = train_test_split(data_X, data_y, test_size = 0.25, random_state = 33)
 scaler = preprocessing.StandardScaler().fit(X_train)
@@ -83,9 +91,9 @@ legend = ['healthy', 'sick']
 
 #clf = tree.DecisionTreeClassifier(criterion = 'entropy', max_depth = 7, min_samples_leaf = 5)
 
-#clf = KNeighborsClassifier(n_neighbors=10)
+clf = KNeighborsClassifier(n_neighbors=5)
 
-clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1, max_depth=1, random_state=5).fit(X_train, y_train)
+#clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1, max_depth=1, random_state=5).fit(X_train, y_train)
 
 clf = clf.fit(X_train,y_train)
 print "score", clf.score(X_test, y_test)
@@ -97,6 +105,11 @@ measure_performance(X_test, y_test,clf)
 #graph.write_png('titanic.png')
 
 ##############################
+if len(X_train[1]) == 2:
+    try:
+        prettyPicture(clf, X_train, y_train, X_test, y_test)
+    except NameError:
+        pass
 
 
 
