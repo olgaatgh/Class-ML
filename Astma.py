@@ -86,12 +86,12 @@ legend = ['healthy', 'sick']
 
 ##################################
 
-#clf = SVC(C = 100000.0, kernel='rbf')
+clf = SVC(C = 100000.0, kernel='rbf')
 #clf = SVC(kernel='linear')
 
 #clf = tree.DecisionTreeClassifier(criterion = 'entropy', max_depth = 7, min_samples_leaf = 5)
 
-clf = KNeighborsClassifier(n_neighbors=5)
+#clf = KNeighborsClassifier(n_neighbors=5)
 
 #clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1, max_depth=1, random_state=5).fit(X_train, y_train)
 

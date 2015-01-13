@@ -80,8 +80,8 @@ plt.scatter(X_train[:, 5], X_train[:, 3])
   
 ##################################
 
-clf = SVC(C = 100000.0, kernel='rbf')
-#clf = SVC(kernel='linear')
+#clf = SVC(C = 100000.0, kernel='rbf')
+clf = SVC(kernel='linear')
 
 #clf = tree.DecisionTreeClassifier(criterion = 'entropy', max_depth = 7, min_samples_leaf = 5)
 
