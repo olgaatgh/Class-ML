@@ -35,6 +35,7 @@ from scipy.stats import sem
 from class_vis import prettyPicture
 from learning_curve import plot_learning_curve
 ######################
+# Mega-comment1
 
 def measure_performance(X,y,clf, show_accuracy = True, show_classification_report = True, show_confusion_matrix = True):
     '''
